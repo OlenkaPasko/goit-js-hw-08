@@ -26,9 +26,15 @@ function onTextareaInput(event) {
 
 function onFormSubmit(event) {
   event.preventDefault();
-  if (refs.input.value === '' || refs.textarea.value === '') {
-    return alert(`Please fill in all the fields!`);
+  console.log({ email: email.value, message: message.value });
+
+  if (email.value === '' || message.value === '') {
+    return alert('Please fill in all the fields!');
   }
+
+  localStorage.removeItem(STORAGE_KEY);
+  event.currentTarget.reset();
+  formData = {};
 }
 
 function messageForm(event) {
