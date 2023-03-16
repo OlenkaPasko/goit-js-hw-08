@@ -13,11 +13,17 @@ const refs = {
 refs.input.addEventListener('input', throttle(onTextareaInput, 500));
 refs.form.addEventListener('submit', onFormSubmit);
 
+/*Відстежуй на формі подію input, і щоразу записуй у 
+окальне сховище об'єкт з полями email і message, 
+у яких зберігай поточні значення полів форми. 
+Нехай ключем для сховища буде рядок "feedback-form-state".*/
 
 function onTextareaInput(event) {
-  formData[event.target.name] = event.target.value;
+  formData = { email: email.value, message: message.value }; 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
+
+
 function onFormSubmit(event) {
   event.preventDefault();
   if (refs.input.value === '' || refs.textarea.value === '') {
@@ -26,11 +32,8 @@ function onFormSubmit(event) {
 }
 
 function messageForm(event) {
-  {
-    if (formData) {
-      let { email, message } = form.elements;
-      email.value = formData.email || '';
-      message.value = formData.message || '';
-    }
+  if (dataForm) {
+    email.value = dataForm.email || '';
+    message.value = dataForm.message || '';
   }
 }
