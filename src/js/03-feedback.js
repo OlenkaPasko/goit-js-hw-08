@@ -14,6 +14,13 @@ function onTextareaInput(event) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
+function messageForm(event) {
+  if (formData) {
+    email.value = formData.email || '';
+    message.value = formData.message || '';
+  }
+}
+
 function onFormSubmit(event) {
   event.preventDefault();
   console.log({ email: email.value, message: message.value });
@@ -25,11 +32,4 @@ function onFormSubmit(event) {
   localStorage.removeItem(STORAGE_KEY);
   event.currentTarget.reset();
   formData = {};
-}
-
-function messageForm(event) {
-  if (dataForm) {
-    email.value = dataForm.email || '';
-    message.value = dataForm.message || '';
-  }
 }
