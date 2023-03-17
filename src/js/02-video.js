@@ -11,9 +11,8 @@ const onPlay = function (data) {
 player.on('timeupdate', throttle(onPlay, 1000));
 
 const currentTime = Number(localStorage.getItem('videoplayer-current-time'));
-player
-  .setCurrentTime(currentTime)
-  .then(function (seconds) {})
+
+player.setCurrentTime(currentTime).then(function (seconds) {})
   .catch(function (error) {
     switch (error.name) {
       case 'RangeError':
